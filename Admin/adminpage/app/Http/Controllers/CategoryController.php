@@ -4,72 +4,64 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('loginpage');
+       $category = category::all();
+    return view('listcategorytable', compact('category'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-public function category(){
-    return view('category');
-}
-
-    public function home(){
-        return view('welcome');
-    }
-
     public function create()
     {
-   return view('shop');
-       }
+        return view('category');
+    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        category::create($request->all());
+    return redirect()->route('welcome');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(category $category)
     {
-        //
+     return view('listcategory', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(string $id)
     {
-        return view('edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, admin $shop)
+    public function update(Request $request, string $id)
     {
-        $shop->update($request->all());
-        return redirect()->route('welcome');
-        
+        //
     }
 
-  
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(category $category)
     {
-        //
+        $category->delete();
+    return redirect()->route('welcome');
     }
 }

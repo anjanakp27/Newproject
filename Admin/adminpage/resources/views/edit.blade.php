@@ -8,6 +8,8 @@
     * {box-sizing: border-box}
 .container {
   padding: 50px;
+  display:grid;
+  flex-direction: row;
 }
 input[type=text]{
   width: 50%;
@@ -46,23 +48,25 @@ input[type=text]:focus {
   </style>
 </head>
 <body>
-<form action="action_page.php">
+  @include('header')
+<form action="edit.blade.php">
   <div class="container">
     <h1>Edit Shop</h1>
     
 
-    <label for="shopname"><b>Shop Name</b></label>
+    <label for="shopname"><b>Shop Name:</b></label>
     <input type="text" placeholder="Enter shopname" name="shopname" id="shopname" required>
 <br>
-    <label for="phonenumber"><b>Phonenumber</b></label>
+    <label for="phonenumber"><b>Phone Number:</b></label>
     <input type="text" placeholder="Enter Phonenumber" name="phonenumber" id="phonenumber" required>
 <br>
-    <label for="category"><b>Category</b></label>
+    <label for="category"><b>Category:</b></label>
     <input type="text" placeholder="Enter Category" name="category" id="category" required>
     <br>
-    <button type="submit" class="registerbtn">Register</button>
+    <button type="submit" class="registerbtn">Update</button>
   </div>
 </form>
+@include('footer')
 </body>
 </html>
 
