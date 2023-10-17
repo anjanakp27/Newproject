@@ -52,7 +52,8 @@ margin: 0 auto;
 @include('header')  
 <h1><b><center>ADD CATEGORY</center></b></h1>
     <div class="container">
-  <form action="action_page.php">
+  <form action="{{route('storecategory')}}" method="post">
+    @csrf
     <div class="row">
       <div class="col-25">
         <label for="fname">Category Name:</label>

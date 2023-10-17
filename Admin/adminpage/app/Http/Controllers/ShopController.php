@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\shop;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -12,7 +12,7 @@ class ShopController extends Controller
     public function index()
     {
         $shops = shop::all();
-    return view('table', compact('shop'));
+    return view('listshoptable', compact('shops'));
     }
 
     /**
@@ -29,7 +29,7 @@ class ShopController extends Controller
     public function store(Request $request)
     {
          shop::create($request->all());
-    return redirect()->route('shop');
+    return redirect()->route('addshop');
     }
 
     /**
@@ -37,7 +37,7 @@ class ShopController extends Controller
      */
     public function show(shop $shop)
     {
-        //
+        return view('listshoptable', compact('shop'));
     }
 
     /**

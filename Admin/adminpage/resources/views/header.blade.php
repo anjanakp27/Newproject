@@ -45,14 +45,15 @@
           </li>
           <li class="nav-item">
 
-            <a class="nav-link" href="{{ route('listcategory') }}">
+     <a class="nav-link" href="{{ route('listcategory') }}">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Add Category</span>
             </a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <!-- <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> -->
+              <a class="nav-link" href="{{ route('addshop') }}">
               <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               <span class="menu-title">Shops</span>
               <i class="menu-arrow"></i>
@@ -78,7 +79,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('listcategory') }}">
+            <a class="nav-link" href="{{ route('storecategory') }}">
               <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               <span class="menu-title">List Category</span>
             </a>

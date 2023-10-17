@@ -25,11 +25,17 @@ Route::get('/header', function () {
 Route::get('/table', function () {
     return view('table');
 });
-Route::post('/category', [CategoryController::class, 'create'])->name('listcategory');
+Route::get('/category', [CategoryController::class, 'create'])->name('listcategory');
+Route::post('/category', [CategoryController::class, 'store'])->name('storecategory');
+Route::get('/viewcategory', [CategoryController::class, 'index'])->name('storecategory');
+
 Route::get('/welcome', [AdminController::class, 'home']);
-Route::post('/create', [ShopController::class, 'create'])->name('addshop');
+
+Route::get('/create', [ShopController::class, 'create'])->name('addshop');
+Route::post('/create', [ShopController::class, 'store'])->name('storeshop');
+Route::get('/viewshop', [ShopController::class, 'index'])->name('viewshop ');
 Route::get('/edit/{shop}/edit', [ShopController::class, 'edit']);
 Route::put('/shop/{shop}', [ShopController::class, 'update']);
 Route::get('/viewtable', [ShopController::class, 'index'])->name('viewshop');
-Route::get('/listcategory', [CategoryController::class, 'index'])->name('listcategory');
+
 

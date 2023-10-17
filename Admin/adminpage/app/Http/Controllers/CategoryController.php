@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         category::create($request->all());
-    return redirect()->route('welcome');
+         return redirect()->route('storecategory ');
     }
 
     /**
@@ -37,7 +37,7 @@ class CategoryController extends Controller
      */
     public function show(category $category)
     {
-     return view('listcategory', compact('category'));
+     return view('listcategorytable', compact('category'));
     }
 
     /**

@@ -48,6 +48,7 @@ button {
 
     <center> <h1> Login Form </h1>  
     <form>
+        @csrf
 
         <div class="container"> 
          

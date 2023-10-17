@@ -59,7 +59,8 @@ input[type=text]:focus {
 </head>
 <body>
   @include('header')
-<form action="Shop.blade.php">
+<form action="{{route('storeshop')}}" method="post">
+  @csrf
   <div class="container">
     <h1>Add Shop</h1>
     
