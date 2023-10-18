@@ -25,6 +25,14 @@
                         <td>{{$shops->shopname}}</td>
                         <td>{{$shops->phonenumber}}</td>
                         <td>{{$shops->category}}</td>
+                        
+                        <td><a href="{{ route('edit', $shops) }}" class="btn btn-warning">Edit</a>
+ <form action="{{ route('destroy', $shops) }}" method="POST" class="d-inline">@csrf
+  @method('DELETE')
+                      
+                            <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+                          </td>
                       </tr>
                       @endforeach
                     </tbody>

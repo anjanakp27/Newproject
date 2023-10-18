@@ -49,19 +49,29 @@ input[type=text]:focus {
 </head>
 <body>
   @include('header')
-<form action="edit.blade.php">
+<form action="{{ route('update-shop', ['shop' => $shop->id]) }}" method="POST">
+@csrf
+@method('PUT')
+
   <div class="container">
     <h1>Edit Shop</h1>
-    
+       
+                      <!-- <tr>
+                        <td>{{$shop->id}}</td>
+                        <td>{{$shop->shopname}}</td>
+                        <td>{{$shop->phonenumber}}</td>
+                       <td>{{$shop->category}}</td>
+                         -->
 
     <label for="shopname"><b>Shop Name:</b></label>
-    <input type="text" placeholder="Enter shopname" name="shopname" id="shopname" required>
+    <input type="text" placeholder="Enter shopname" name="shopname" id="shopname" required value="{{ $shop->shopname }}">
+
 <br>
     <label for="phonenumber"><b>Phone Number:</b></label>
-    <input type="text" placeholder="Enter Phonenumber" name="phonenumber" id="phonenumber" required>
+    <input type="text" placeholder="Enter Phonenumber" name="phonenumber" id="phonenumber" required value="{{ $shop->phonenumber }}">
 <br>
     <label for="category"><b>Category:</b></label>
-    <input type="text" placeholder="Enter Category" name="category" id="category" required>
+    <input type="text" placeholder="Enter Category" name="category" id="category" required value="{{ $shop->category }}">
     <br>
     <button type="submit" class="registerbtn">Update</button>
   </div>

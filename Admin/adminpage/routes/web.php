@@ -27,15 +27,16 @@ Route::get('/table', function () {
 });
 Route::get('/category', [CategoryController::class, 'create'])->name('listcategory');
 Route::post('/category', [CategoryController::class, 'store'])->name('storecategory');
-Route::get('/viewcategory', [CategoryController::class, 'index'])->name('storecategory');
+Route::get('/viewcategory', [CategoryController::class, 'index'])->name('viewcategory');
 
 Route::get('/welcome', [AdminController::class, 'home']);
 
 Route::get('/create', [ShopController::class, 'create'])->name('addshop');
 Route::post('/create', [ShopController::class, 'store'])->name('storeshop');
-Route::get('/viewshop', [ShopController::class, 'index'])->name('viewshop ');
-Route::get('/edit/{shop}/edit', [ShopController::class, 'edit']);
-Route::put('/shop/{shop}', [ShopController::class, 'update']);
 Route::get('/viewtable', [ShopController::class, 'index'])->name('viewshop');
+Route::get('/edit/{shop}', [ShopController::class, 'edit'])->name('edit');
+Route::put('/shop/{shop}', [ShopController::class, 'update'])->name('update-shop');
 
 
+
+Route::delete('/shop/{shop}', [ShopController::class, 'destroy'])->name('destroy');

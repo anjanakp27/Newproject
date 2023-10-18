@@ -57,6 +57,7 @@ margin: 0 auto;
     <div class="row">
       <div class="col-25">
         <label for="fname">Category Name:</label>
+        
       </div>
 
       <div class="col-75">

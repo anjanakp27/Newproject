@@ -72,7 +72,13 @@ input[type=text]:focus {
     <input type="text"  placeholder="Enter Phonenumber" name="phonenumber" id="phonenumber" required>
 <br>
     <label for="category"><b>Category:</b></label>
-    <input type="text" placeholder="Enter Category" name="category" id="category" required>
+   <select class="form-control" name="categoryname"> 
+    <!-- <input type="text" placeholder="Enter Category" name="category" id="category" required> -->
+       @foreach($category as $category)
+    <option value="{{$category->categoryname}}">{{$category->categoryname}}</option>
+    @endforeach
+  </select>
+
     <br>
     <button type="submit" class="registerbtn">Register</button>
   </div>

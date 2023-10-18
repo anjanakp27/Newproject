@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         category::create($request->all());
-         return redirect()->route('storecategory ');
+         return redirect()->route('viewcategory');
     }
 
     /**

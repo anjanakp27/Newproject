@@ -79,7 +79,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('storecategory') }}">
+            <a class="nav-link" href="{{ route('viewcategory') }}">
               <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               <span class="menu-title">List Category</span>
             </a>

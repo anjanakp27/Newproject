@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\shop;
+use App\Models\category;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -20,7 +21,9 @@ class ShopController extends Controller
      */
     public function create()
     {
-        return view('shop');
+        
+        $category = category::all();
+    return view('shop', compact('category'));
     }
 
     /**
@@ -29,7 +32,7 @@ class ShopController extends Controller
     public function store(Request $request)
     {
          shop::create($request->all());
-    return redirect()->route('addshop');
+    return redirect()->route('viewshop');
     }
 
     /**
@@ -46,8 +49,10 @@ class ShopController extends Controller
     public function edit(shop $shop)
     {
 
-         return view('edit', compact('shop'));
+        return view('edit', compact('shop'));
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -56,7 +61,7 @@ class ShopController extends Controller
     public function update(Request $request, shop $shop)
     {
         $shop->update($request->all());
-        return redirect()->route('welcome');
+        return redirect()->route('viewshop');
         
     }
     /**
@@ -65,6 +70,6 @@ class ShopController extends Controller
     public function destroy(shop $shop)
     {
            $shop->delete();
-    return redirect()->route('shop');
+    return redirect()->route('viewshop');
     }
 }
