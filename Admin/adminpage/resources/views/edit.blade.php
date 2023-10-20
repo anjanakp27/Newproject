@@ -71,7 +71,12 @@ input[type=text]:focus {
     <input type="text" placeholder="Enter Phonenumber" name="phonenumber" id="phonenumber" required value="{{ $shop->phonenumber }}">
 <br>
     <label for="category"><b>Category:</b></label>
-    <input type="text" placeholder="Enter Category" name="category" id="category" required value="{{ $shop->category }}">
+    <!-- <input type="text" placeholder="Enter Category" name="category" id="category" required value="{{ $shop->category }}"> -->
+    <select  class="form-control" name="categoryname" value=required value="{{ $shop->category }}"> 
+       @foreach($shop as $category)
+    <option value="{{$shop->category}}">{{$shop->category}}</option>
+    @endforeach
+  </select>
     <br>
     <button type="submit" class="registerbtn">Update</button>
   </div>

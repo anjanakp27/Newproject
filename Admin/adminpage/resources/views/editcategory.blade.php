@@ -54,10 +54,13 @@ margin: 0 auto;
 </head>    
 <body>  
 @include('header')  
-<h1><b><center>ADD CATEGORY</center></b></h1>
+<h1><b><center>EDIT CATEGORY</center></b></h1>
     <div class="container">
-  <form action="{{route('storecategory')}}" method="post">
-    @csrf
+  <form action="{{route('updatecategory', ['category' => $category->id])}} " method="post">
+   @csrf
+@method('PUT')
+
+
     <div class="row">
       <div class="col-sm-4">
         <label for="fname">Category Name:</label>
@@ -65,7 +68,7 @@ margin: 0 auto;
       <div class="col-sm-8" style="background-color:whitesmoke;"> 
         
      
-        <input type="text" id="categoryname" name="categoryname" placeholder="Enter category name">
+        <input type="text" id="categoryname" name="categoryname" placeholder="Enter category name" required value="{{ $category->categoryname }}">
         </div>
       </div>
 

@@ -4,7 +4,7 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Shops list</h4>
-                <p class="card-description"> Add class <code>.table-bordered</code>
+                <p class="card-description">Admin <code>.table-bordered</code>
                 </p>
 
                 <div class="table-responsive">

@@ -43,17 +43,19 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(category $category)
     {
-        //
+        return view('editcategory', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, category $category)
     {
-        //
+        $category->update($request->all());
+        return redirect()->route('viewcategory');
+        
     }
 
     /**
@@ -62,6 +64,6 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         $category->delete();
-    return redirect()->route('welcome');
+    return redirect()->route('viewcategory');
     }
 }

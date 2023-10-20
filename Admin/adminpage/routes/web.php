@@ -28,6 +28,11 @@ Route::get('/table', function () {
 Route::get('/category', [CategoryController::class, 'create'])->name('listcategory');
 Route::post('/category', [CategoryController::class, 'store'])->name('storecategory');
 Route::get('/viewcategory', [CategoryController::class, 'index'])->name('viewcategory');
+Route::get('/editcategory/{category}', [CategoryController::class, 'edit'])->name('editcategory');
+
+Route::put('/category/{category}', [CategoryController::class, 'update'])->name('updatecategory');
+
+Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('destroycategory');
 
 Route::get('/welcome', [AdminController::class, 'home']);
 
