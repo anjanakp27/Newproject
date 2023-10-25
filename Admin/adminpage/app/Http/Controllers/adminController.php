@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\shop;
 
 use Illuminate\Http\Request;
 
@@ -13,6 +14,24 @@ class AdminController extends Controller
     {
         return view('loginpage');
     }
+    public function perform()
+    {
+       
+        return redirect('/');
+    }
+    public function notify()
+    {
+       
+       $shops = shop::all();
+    return view('request', compact('shops'));
+    }
+   public function add(Request $request, shop $shop)
+    {
+        $shop->update($request->all());
+        return redirect()->route('request');
+        
+    }
+
 
     /**
      * Show the form for creating a new resource.

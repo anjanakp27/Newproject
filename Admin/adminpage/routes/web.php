@@ -45,3 +45,6 @@ Route::put('/shop/{shop}', [ShopController::class, 'update'])->name('update-shop
 
 
 Route::delete('/shop/{shop}', [ShopController::class, 'destroy'])->name('destroy');
+Route::get('/signout',[AdminController::class,'perform'])->name('signout');
+Route::get('/request',[AdminController::class,'notify'])->name('request');
+Route::put('/add/{shop}',[AdminController::class,'add'])->name('add');
