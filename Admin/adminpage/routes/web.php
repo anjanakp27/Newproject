@@ -48,3 +48,4 @@ Route::delete('/shop/{shop}', [ShopController::class, 'destroy'])->name('destroy
 Route::get('/signout',[AdminController::class,'perform'])->name('signout');
 Route::get('/request',[AdminController::class,'notify'])->name('request');
 Route::put('/add/{shop}',[AdminController::class,'add'])->name('add');
+Route::get('/addedit/{shop}',[AdminController::class,'addedit'])->name('addedit');

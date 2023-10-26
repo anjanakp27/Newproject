@@ -31,6 +31,10 @@ class AdminController extends Controller
         return redirect()->route('request');
         
     }
+    public function addedit()
+    {
+        return view('add');
+    }
 
 
     /**
