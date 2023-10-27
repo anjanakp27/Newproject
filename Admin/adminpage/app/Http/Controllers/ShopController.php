@@ -31,7 +31,8 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-         shop::create($request->all());
+        
+        shop::create($request->all());
     return redirect()->route('viewshop');
     }
 

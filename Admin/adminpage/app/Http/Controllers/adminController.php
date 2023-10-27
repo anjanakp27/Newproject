@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\shop;
+use App\Models\category;
 
 use Illuminate\Http\Request;
 
@@ -19,22 +20,13 @@ class AdminController extends Controller
        
         return redirect('/');
     }
-    public function notify()
-    {
+    // public function notify()
+    // {
        
-       $shops = shop::all();
-    return view('request', compact('shops'));
-    }
-   public function add(Request $request, shop $shop)
-    {
-        $shop->update($request->all());
-        return redirect()->route('request');
-        
-    }
-    public function addedit()
-    {
-        return view('add');
-    }
+    //    $shops = shop::all();
+    // return view('request', compact('shops'));
+    // }
+   
 
 
     /**

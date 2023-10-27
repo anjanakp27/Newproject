@@ -82,20 +82,15 @@ input[type=text]:focus {
 <br>
     <label for="category"><b>Category:</b></label>
       <div class="row"><div class="col-sm-6" style="background-color:whitesmoke;"> 
-   <select class="form-control" name="categoryname"> 
+   <select class="form-control" name="category" > 
     <!-- <input type="text" placeholder="Enter Category" name="category" id="category" required> -->
        @foreach($category as $category)
     <option value="{{$category->categoryname}}">{{$category->categoryname}}</option>
     @endforeach
   </select>
 </div></div>
- <!-- <select class="form-control form-control-lg" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select> -->
+ 
+                     
     <br>
     <button type="submit" class="registerbtn btn-danger">Register</button>
   </div>

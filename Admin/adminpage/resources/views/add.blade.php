@@ -49,32 +49,27 @@ input[type=text]:focus {
 </head>
 <body>
   @include('header')
-<form action="{{ route('add', ['shop' => $shop->id]) }}" method="POST">
+<form action="{{route('addedit',$requestadmin)}}" method="post">
 @csrf
-@method('PUT')
+@method('post')
 
   <div class="container">
     <h1>Edit Shop</h1>
        
-                      <!-- <tr>
-                        <td>{{$shop->id}}</td>
-                        <td>{{$shop->shopname}}</td>
-                        <td>{{$shop->phonenumber}}</td>
-                       <td>{{$shop->category}}</td>
-                         -->
+                    
 
     <label for="shopname"><b>Shop Name:</b></label>
-    <input type="text" placeholder="Enter shopname" name="shopname" id="shopname" required value="{{ $shop->shopname }}">
+    <input type="text" placeholder="Enter shopname" name="shopname" id="shopname" required value="{{ $requestadmin->shopname }}">
 
 <br>
     <label for="phonenumber"><b>Phone Number:</b></label>
-    <input type="text" placeholder="Enter Phonenumber" name="phonenumber" id="phonenumber" required value="{{ $shop->phonenumber }}">
+    <input type="text" placeholder="Enter Phonenumber" name="phonenumber" id="phonenumber" required value="{{ $requestadmin->phonenumber }}">
 <br>
     <label for="category"><b>Category:</b></label>
-    <!-- <input type="text" placeholder="Enter Category" name="category" id="category" required value="{{ $shop->category }}"> -->
-    <select  class="form-control" name="categoryname" value=required value="{{ $shop->category }}"> 
-       @foreach($shop as $category)
-    <option value="{{$shop->category}}">{{$shop->category}}</option>
+    <!-- <input type="text" placeholder="Enter Category" name="category" id="category" required value="{{ $shops->category }}"> -->
+    <select  class="form-control" name="category" value=required value="{{ $requestadmin->category }}"> 
+       @foreach($shops as $category)
+    <option value="{{$shops->category}}">{{$shops->category}}</option>
     @endforeach
   </select>
     <br>
