@@ -11,7 +11,7 @@
                   <table class="table table-bordered">
                     <thead>
                       <tr>
-                        <th>No.</th>
+                        <th>Sl No</th>
                         <th>Shop name</th>
                         <th>Phone number</th>
                         <th>Category</th>
@@ -19,9 +19,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @php $SlNo = 1 @endphp
                       @foreach($shops as $shops)
                       <tr>
-                        <td>{{$shops->id}}</td>
+                        
+                         <td>{{ $SlNo }}</td>
                         <td>{{$shops->shopname}}</td>
                         <td>{{$shops->phonenumber}}</td>
                         <td>{{$shops->category}}</td>
@@ -34,6 +36,7 @@
 </form>
                           </td>
                       </tr>
+                      @php $SlNo++ @endphp
                       @endforeach
                     </tbody>
                   </table>

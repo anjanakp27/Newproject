@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class request extends Model
+class newrequest extends Model
 {
     public $timestamps = false;
     protected $table = 'request'; // Set the table name explicitly

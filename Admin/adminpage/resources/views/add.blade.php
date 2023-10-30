@@ -49,12 +49,12 @@ input[type=text]:focus {
 </head>
 <body>
   @include('header')
-<form action="{{route('addedit',$requestadmin)}}" method="post">
+<form action="{{route('storeshop',$requestadmin)}}" method="post">
 @csrf
 @method('post')
 
   <div class="container">
-    <h1>Edit Shop</h1>
+    <h1>Add request</h1>
        
                     
 
@@ -66,14 +66,19 @@ input[type=text]:focus {
     <input type="text" placeholder="Enter Phonenumber" name="phonenumber" id="phonenumber" required value="{{ $requestadmin->phonenumber }}">
 <br>
     <label for="category"><b>Category:</b></label>
-    <!-- <input type="text" placeholder="Enter Category" name="category" id="category" required value="{{ $shops->category }}"> -->
-    <select  class="form-control" name="category" value=required value="{{ $requestadmin->category }}"> 
-       @foreach($shops as $category)
-    <option value="{{$shops->category}}">{{$shops->category}}</option>
+     <div class="row"><div class="col-sm-6" style="background-color:whitesmoke;"> 
+    <!-- <select  class="form-control" name="category" value=required value="{{ $requestadmin->category }}">  -->
+     <select class="form-control" name="category" required>
+    @foreach($category as $cat)
+        <option value="{{ $cat->categoryname }}" {{ $cat->categoryname == $requestadmin->category ? 'selected' : '' }}>
+            {{ $cat->categoryname }}
+        </option>
     @endforeach
-  </select>
+</select>
+</div>
+</div>
     <br>
-    <button type="submit" class="registerbtn">Add</button>
+    <button type="submit" class="registerbtn">Insert</button>
   </div>
 </form>
 @include('footer')

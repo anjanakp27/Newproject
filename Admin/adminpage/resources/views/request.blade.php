@@ -19,21 +19,23 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @php $SlNo = 1 @endphp
                       @foreach($requestadmin as $requestadmin)
                       <tr>
-                        <td>{{$requestadmin->id}}</td>
+                        <td>{{ $SlNo }}</td>
                         <td>{{$requestadmin->shopname}}</td>
                         <td>{{$requestadmin->phonenumber}}</td>
                         <td>{{$requestadmin->category}}</td>
                         
-                        <td><a href="{{ route('addedit', $requestadmin) }}" class="btn btn-warning">Add</a>
- <form action="{{ route('destroy', $shops) }}" method="POST" class="d-inline">@csrf
+                        <td><a href="{{ route('addrequest', $requestadmin) }}" class="btn btn-warning">Add</a>
+ <form action="{{ route('deleterequest', $requestadmin) }}" method="POST" class="d-inline">@csrf
   @method('DELETE')
                       
                             <button type="submit" class="btn btn-danger">Delete</button>
 </form>
                           </td>
                       </tr>
+                       @php $SlNo++ @endphp
                       @endforeach
                     </tbody>
                   </table>

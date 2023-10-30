@@ -47,6 +47,10 @@ Route::put('/shop/{shop}', [ShopController::class, 'update'])->name('update-shop
 
 Route::delete('/shop/{shop}', [ShopController::class, 'destroy'])->name('destroy');
 Route::get('/signout',[AdminController::class,'perform'])->name('signout');
-// Route::get('/request',[req::class,'notify'])->name('request');
+
 Route::put('/add/{requestadmin}',[RequestController::class,'add'])->name('add');
-Route::get('/addedit/{requestadmin}',[RequestController::class,'addedit'])->name('addedit');
+Route::get('/requestview',[RequestController::class,'show'])->name('requestview');
+Route::get('/createrequest', [RequestController::class, 'create'])->name('createrequest');
+Route::post('/storerequest', [RequestController::class, 'store'])->name('storerequest');
+Route::get('/viewrequest/{requestadmin}', [RequestController::class, 'edit'])->name('addrequest');
+Route::delete('/deleterequest/{requestadmin}', [RequestController::class, 'destroy'])->name('deleterequest');

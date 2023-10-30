@@ -68,7 +68,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('request') }}">
+            <a class="nav-link" href="{{ route('requestview') }}">
               <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               <span class="menu-title">Request</span>
             </a>

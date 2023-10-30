@@ -21,9 +21,10 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @php $SlNo = 1 @endphp
                       @foreach($category as $category)
                       <tr>
-                        <td>{{$category->id}}</td>
+                        <td>{{ $SlNo }}</td>
                         <td>{{$category->categoryname}}</td>
                         <td><a href="{{ route('editcategory', $category) }}" class="btn btn-warning">Edit</a>
  <form action="{{ route('destroycategory', $category) }}" method="POST" class="d-inline">@csrf
@@ -33,7 +34,7 @@
 </form>
                           </td>
                         </tr>
-
+                       @php $SlNo++ @endphp
                       @endforeach
                     </tbody>
                   </table>
