@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApiShopController;
+use App\Http\Controllers\ShopApiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/listshops', [ShopApiController::class, 'index']);
+
+Route::post('/addrequest', [ShopApiController::class, 'store']);

@@ -49,8 +49,8 @@ class ShopController extends Controller
      */
     public function edit(shop $shop)
     {
-
-        return view('edit', compact('shop'));
+        $category = category::all();
+        return view('edit', compact('shop','category'));
     }
 
 
