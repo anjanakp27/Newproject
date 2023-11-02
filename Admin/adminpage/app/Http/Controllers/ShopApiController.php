@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\shop;
-
+use App\Models\category;
 class ShopApiController extends Controller
 {
     /**
@@ -12,8 +12,28 @@ class ShopApiController extends Controller
      */
     public function index()
     {
-        $shops = shop::all();
-        return response()->json($shops);
+        // $shops = shop::all();
+        // return response()->json($shops);
+        $shops = Shop::all();
+
+$data = [];
+
+foreach ($shops as $index => $shop) {
+    $data[] = [
+        'id' => ($index + 1), // You can set the ID as needed
+        'shopname' => $shop->shopname,
+        'category' => $shop->category,
+        'phonenumber' => $shop->phonenumber,
+    ];
+}
+
+$response = [
+    'status' => 'success',
+    'data' => $data,
+];
+
+return response()->json($response);
+
     }
 
     /**
@@ -33,6 +53,32 @@ class ShopApiController extends Controller
 
         $shop = shop::create($request->all());
         return response()->json($shop, 201);
+    }
+
+ public function fetchcategory()
+    {
+        // $category = category::all();
+        // return response()->json($category);
+       $category = category::all();
+
+// Create an array to store the transformed data
+$data = [];
+
+foreach ($category as $index => $item) {
+    $data[] = [
+        'id' => ($index + 1), // You can set the ID as needed
+        'categoryname' => ucfirst($item->categoryname), // Capitalize the category name
+    ];
+}
+
+// Create the desired JSON structure
+$response = [
+    'status' => 'success',
+    'data' => $data,
+];
+
+return response()->json($response);
+
     }
 
 }

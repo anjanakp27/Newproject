@@ -20,3 +20,5 @@ use App\Http\Controllers\ShopApiController;
 Route::get('/listshops', [ShopApiController::class, 'index']);
 
 Route::post('/addrequest', [ShopApiController::class, 'store']);
+
+Route::get('/fetchcategory', [ShopApiController::class, 'fetchcategory']);
