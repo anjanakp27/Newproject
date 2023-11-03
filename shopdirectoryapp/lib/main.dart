@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'testapi.dart';
+import 'search.dart';
 void main() {
-  runApp(const HomePage());
+  runApp(MaterialApp(home: GetSingleEmployee()));
 }
 
 class MainApp extends StatelessWidget {
@@ -9,8 +10,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(centerTitle: true,
           title: Text(
            'SHOP DIRECTORY APP'),
@@ -86,7 +86,7 @@ class MainApp extends StatelessWidget {
             ],
           ),
         )
-      ),
+      
       );
     
   

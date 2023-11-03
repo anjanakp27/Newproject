@@ -22,3 +22,7 @@ Route::get('/listshops', [ShopApiController::class, 'index']);
 Route::post('/addrequest', [ShopApiController::class, 'store']);
 
 Route::get('/fetchcategory', [ShopApiController::class, 'fetchcategory']);
+
+Route::get('/shops/category/{category}', [ShopApiController::class, 'filterByCategory']);
+
+Route::get('/shops/{id}', [ShopApiController::class, 'getShopById']);

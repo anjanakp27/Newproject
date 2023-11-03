@@ -3,9 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-void main() {
-  runApp(MaterialApp(home: HomePage()));
-}
+
 
 class Employee {
   final dynamic id;
@@ -63,8 +61,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Employee List'),
+      appBar: AppBar(centerTitle: true,
+        title: Text('SHOP DIRECTORY APP '),
       ),
       body: ListView.builder(
         itemCount: employees.length,

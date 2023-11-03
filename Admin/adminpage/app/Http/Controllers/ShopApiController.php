@@ -81,4 +81,28 @@ return response()->json($response);
 
     }
 
+
+    public function filterByCategory($category)
+{
+    $shops = Shop::where('category', $category)->get();
+
+    if ($shops->isEmpty()) {
+        return response()->json(['message' => 'No shops found for the specified category'], 404);
+    }
+
+    return response()->json(['status' => 'success', 'data' => $shops]);
+}
+
+
+public function getShopById($id)
+{
+    $shop = Shop::find($id);
+
+    if (!$shop) {
+        return response()->json(['message' => 'Shop not found'], 404);
+    }
+
+    return response()->json(['status' => 'success', 'data' => $shop]);
+}
+
 }
