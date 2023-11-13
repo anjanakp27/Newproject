@@ -20,31 +20,31 @@ class RequestFormState extends State<RequestForm> {
 
 
 
-Future<void> requestSend(newrequest newrequest) async {
-  final apiUrl = "http://localhost:8000/api/addrequest"; // Replace with your API endpoint
-  final jsonData = jsonEncode({
-    "shopname": newrequest.shopName,
-    "category": newrequest.category,
-    "phonenumber": newrequest.phoneNumber,
-  });
+// Future<void> requestSend(newrequest newrequest) async {
+//   final apiUrl = "http://localhost:8000/api/addrequest"; // Replace with your API endpoint
+//   final jsonData = jsonEncode({
+//     "shopname": newrequest.shopName,
+//     "category": newrequest.category,
+//     "phonenumber": newrequest.phoneNumber,
+//   });
 
-  try {
-    final response = await http.post(
-      Uri.parse(apiUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonData,
-    );
+//   try {
+//     final response = await http.post(
+//       Uri.parse(apiUrl),
+//       headers: {'Content-Type': 'application/json'},
+//       body: jsonData,
+//     );
 
-    if (response.statusCode == 200) {
-      print('Data sent successfully');
-    } else {
-      print("Error: ${response.statusCode}");
-      print("Response: ${response.body}");
-    }
-  } catch (e) {
-    print("Error: $e");
-  }
-}
+//     if (response.statusCode == 200) {
+//       print('Data sent successfully');
+//     } else {
+//       print("Error: ${response.statusCode}");
+//       print("Response: ${response.body}");
+//     }
+//   } catch (e) {
+//     print("Error: $e");
+//   }
+// }
 
 
 
@@ -110,7 +110,7 @@ Future<void> requestSend(newrequest newrequest) async {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    requestSend();
+                    // requestSend();
                   }
                 },
                 child: Text('Submit'),
