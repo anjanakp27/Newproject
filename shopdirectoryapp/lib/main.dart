@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'testapi.dart';
+import 'request.dart';
 import 'search.dart';
 void main() {
-  runApp(MaterialApp(home: GetSingleEmployee()));
+  runApp(MaterialApp(home: RequestForm()));
 }
 
 class MainApp extends StatelessWidget {
@@ -15,77 +16,7 @@ class MainApp extends StatelessWidget {
           title: Text(
            'SHOP DIRECTORY APP'),
           ),
-       
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Center(
-                child: Card(
-                
-                  margin: EdgeInsets.all(10),
-                  elevation: 8 ,
-                  child: Container(
-                    padding: EdgeInsets.all(25),
-                    child: Text('HOSPITALS',
-                    
-                    style: TextStyle(
-                      color: Colors.blue
-                    ),
-                    
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 4,
-              ),
-                Center(
-                  child: Card(
-                  margin: EdgeInsets.all(20),
-                  elevation: 8 ,
-                  child: Container(
-                    padding: EdgeInsets.all(25),
-                    child: Text('SHOPS',
-                    style: TextStyle(
-                      color: Colors.blue
-                    ),
-                    ),
-                  ),
-                            ),
-                            
-                ),
-                Center(
-                child: Card(
-                  margin: EdgeInsets.all(20),
-                  elevation: 8 ,
-                  child: Container(
-                    padding: EdgeInsets.all(25),
-                    child: Text('SCHOOLS',
-                    style: TextStyle(
-                      color: Colors.blue
-                    ),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Card(
-                  margin: EdgeInsets.all(20),
-                  elevation: 8 ,
-                  child: Container(
-                    padding: EdgeInsets.all(25),
-                    child: Text('COLLEGES',
-                    style: TextStyle(
-                      color: Colors.blue
-                    ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
+      
       
       );
     

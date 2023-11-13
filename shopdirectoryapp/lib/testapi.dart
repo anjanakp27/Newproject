@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'search.dart';
+import 'package:shopdirectoryapp/search.dart';
 
 
 
@@ -8,6 +11,7 @@ import 'dart:convert';
 class Employee {
   final dynamic id;
   final String categoryname;
+  
 
   Employee({
     required this.id,
@@ -32,6 +36,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Employee> employees = [];
+  
 
   Future<void> _fetchEmployees() async {
     final response = await http
@@ -57,57 +62,67 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _fetchEmployees();
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(centerTitle: true,
-        title: Text('SHOP DIRECTORY APP '),
-      ),
-      body: ListView.builder(
-        itemCount: employees.length,
-        itemBuilder: (context, index) {
-          return ListTile(
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      centerTitle: true,
+      title: Text('SHOP DIRECTORY APP'),
+    ),
+    body: ListView.builder(
+      itemCount: employees.length,
+      itemBuilder: (context, index) {
+        return InkWell(
+          onTap: () {
+            var valueToPass = employees[index].categoryname;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => GetSingleEmployee1(category: valueToPass),
+              ),
+            );
+          },
+          child: ListTile(
             title: Text(employees[index].categoryname),
-            
-          );
-        },
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/add');
-            },
-            child: Icon(Icons.add),
           ),
-          SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/getSingleEmployee');
-            },
-            child: Icon(Icons.search),
-            // You can also use Tooltip here if needed
-          ),
-          SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/update');
-            },
-            child: Icon(Icons.edit),
-            // You can also use Tooltip here if needed
-          ),
-          SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/delete');
-            },
-            child: Icon(Icons.delete),
-            // You can also use Tooltip here if needed
-          ),
-        ],
-      ),
-    );
-  }
+        );
+      },
+    ),
+    floatingActionButton: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/add');
+          },
+          child: Icon(Icons.add),
+        ),
+        SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/getSingleEmployee');
+          },
+          child: Icon(Icons.search),
+          // You can also use Tooltip here if needed
+        ),
+        SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/update');
+          },
+          child: Icon(Icons.edit),
+          // You can also use Tooltip here if needed
+        ),
+        SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/delete');
+          },
+          child: Icon(Icons.delete),
+          // You can also use Tooltip here if needed
+        ),
+      ],
+    ),
+  );
+}
 }
