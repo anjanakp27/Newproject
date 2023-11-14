@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\shop;
+use App\Models\newrequest;
 use App\Models\category;
+use Illuminate\Support\Facades\Validator;
+
+
 class ShopApiController extends Controller
 {
     /**
@@ -51,8 +55,8 @@ return response()->json($response);
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $shop = shop::create($request->all());
-        return response()->json($shop, 201);
+        $requestadmin = newrequest::create($request->all());
+        return response()->json($requestadmin, 201);
     }
 
  public function fetchcategory()

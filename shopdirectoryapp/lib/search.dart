@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class GetSingleEmployee1 extends StatefulWidget {
+class Getcategory extends StatefulWidget {
   final String category;
 
-  GetSingleEmployee1({required this.category});
+  Getcategory({required this.category});
 
   @override
-  _GetSingleEmployee1State createState() => _GetSingleEmployee1State();
+  _GetcategoryState createState() => _GetcategoryState();
 }
 
-class _GetSingleEmployee1State extends State<GetSingleEmployee1> {
+class _GetcategoryState extends State<Getcategory> {
   final TextEditingController categoryController = TextEditingController();
   List<Map<String, dynamic>> shopdetails = [];
 

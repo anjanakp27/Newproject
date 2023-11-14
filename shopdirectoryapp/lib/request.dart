@@ -1,6 +1,11 @@
+
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shopdirectoryapp/testapi.dart';
+
+
 
 class RequestForm extends StatefulWidget {
   const RequestForm({Key? key}) : super(key: key);
@@ -10,42 +15,40 @@ class RequestForm extends StatefulWidget {
 }
 
 class RequestFormState extends State<RequestForm> {
-
-  
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController shopnameController=TextEditingController();
+  final TextEditingController categoryController=TextEditingController();
+  final TextEditingController phonenumberController=TextEditingController();
 
-  String shopname= '';
-  String category = '';
-  String phonenumber = '';
+ 
+ Future<void> _createUser() async {
+    final response = await http.post(
+      Uri.parse('http://localhost:8000/api/addrequest'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'shopname': shopnameController.text,
+        'category': categoryController.text,
+        'phonenumber': phonenumberController.text,
+      }),
+    );
 
-
-
-// Future<void> requestSend(newrequest newrequest) async {
-//   final apiUrl = "http://localhost:8000/api/addrequest"; // Replace with your API endpoint
-//   final jsonData = jsonEncode({
-//     "shopname": newrequest.shopName,
-//     "category": newrequest.category,
-//     "phonenumber": newrequest.phoneNumber,
-//   });
-
-//   try {
-//     final response = await http.post(
-//       Uri.parse(apiUrl),
-//       headers: {'Content-Type': 'application/json'},
-//       body: jsonData,
-//     );
-
-//     if (response.statusCode == 200) {
-//       print('Data sent successfully');
-//     } else {
-//       print("Error: ${response.statusCode}");
-//       print("Response: ${response.body}");
-//     }
-//   } catch (e) {
-//     print("Error: $e");
-//   }
-// }
-
+  if (response.statusCode == 201) 
+  {
+      if (kDebugMode) {
+        print('Request created successfully');
+      }
+      // ignore: use_build_context_synchronously
+      Navigator.pop(context); // Navigate back to previous screen
+    } 
+    else 
+    {
+      if (kDebugMode) {
+        print(response.body);
+      }
+print('Failed to create user');
+    }
+  }
+       
 
 
   @override
@@ -53,68 +56,62 @@ class RequestFormState extends State<RequestForm> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Request Form"),
+        title: const Text("Request Form"),
       ),
       body: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
               TextFormField(
+                controller: shopnameController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter shop name';
                   }
                   return null;
                 },
-                onChanged: (value) {
-                  shopname
-           = value;
-                },
-                decoration: InputDecoration(
+             
+                decoration: const InputDecoration(
                   labelText: 'Shop Name:',
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextFormField(
+                controller: categoryController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter category';
                   }
                   return null;
                 },
-                onChanged: (value) {
-                  category = value;
-                },
-                decoration: InputDecoration(
+              
+                decoration: const InputDecoration(
                   labelText: 'Category:',
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextFormField(
+                controller: phonenumberController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter phone number';
                   }
                   return null;
                 },
-                onChanged: (value) {
-                  phonenumber = value;
-                },
-                decoration: InputDecoration(
+             
+                decoration: const InputDecoration(
                   labelText: 'Phone Number:',
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // requestSend();
-                  }
-                },
-                child: Text('Submit'),
-              )
+                onPressed: (){
+
+                        _createUser();
+                }, child: const Text('Submit'),
+              ),
             ],
           ),
         ),
@@ -122,3 +119,6 @@ class RequestFormState extends State<RequestForm> {
     );
   }
 }
+
+
+
