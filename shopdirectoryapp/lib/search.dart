@@ -2,34 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class Getcategory extends StatefulWidget {
+class GetCategory extends StatefulWidget {
   final String category;
 
-  Getcategory({required this.category});
+  GetCategory({required this.category});
 
   @override
-  _GetcategoryState createState() => _GetcategoryState();
+  _GetCategoryState createState() => _GetCategoryState();
 }
 
-class _GetcategoryState extends State<Getcategory> {
+class _GetCategoryState extends State<GetCategory> {
   final TextEditingController categoryController = TextEditingController();
-  List<Map<String, dynamic>> shopdetails = [];
+  List<Map<String, dynamic>> shopDetails = [];
 
   Future<void> _fetchShopDetails(String category) async {
-    final response =
-        await http.get(Uri.parse('http://localhost:8000/api/shops/category/$category'));
+    try {
+      final response = await http.get(
+          Uri.parse('http://localhost:8000/api/shops/category/$category'));
 
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> data = json.decode(response.body);
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = json.decode(response.body);
 
-      setState(() {
-        shopdetails = List<Map<String, dynamic>>.from(data['data']);
-      });
-    } else {
-      // Handle API request errors here, e.g., show an error message
-      setState(() {
-        shopdetails = [];
-      });
+        setState(() {
+          shopDetails =
+              List<Map<String, dynamic>>.from(data['data'] ?? []);
+        });
+      } else {
+        // Handle API request errors here, e.g., show an error message
+        setState(() {
+          shopDetails = [];
+        });
+      }
+    } catch (error) {
+      // Handle other errors like network issues
+      print("Error: $error");
     }
   }
 
@@ -62,38 +68,42 @@ class _GetcategoryState extends State<Getcategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(centerTitle:true,
+        appBar: AppBar(
           title: Text('Get Shop Details'),
         ),
         body: Center(
-          child: Column(
-            children: [
-              
-              // Center(
-              //   child: Text('Passed Value: ${widget.category}'),
-              // ),
-              if (shopdetails.isNotEmpty)
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: shopdetails.map((shopData) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Shop ID: ${shopData['id']}'),
-                        Text('Shop Name: ${shopData['shopname']}'),
-                        Text('Category: ${shopData['category']}'),
-                        Text('Phone Number: ${shopData['phonenumber']}'),
-                      ],
-                    );
-                  }).toList(),
-                ),
-              
+         
+          child: Padding(
             
-              if (shopdetails.isEmpty)
-                Center(
-                  child: Text('No shop data found'),
-                ),
-            ],
+            padding: EdgeInsets.all(16.0),
+            
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              
+              children: [
+                
+                SizedBox(height: 16.0),
+                if (shopDetails.isNotEmpty)
+                  Column(
+                   
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    
+                    children: shopDetails.map((shopData) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          
+                          Text('Shop Name: ${shopData['shopname']}'),
+                          Text('Category: ${shopData['category']}'),
+                          Text('Phone Number: ${shopData['phonenumber']}'),
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                if (shopDetails.isEmpty)
+                  Text('No shop data found'),
+              ],
+            ),
           ),
         ),
       );
