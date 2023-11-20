@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:shopdirectoryapp/main.dart';
+
 class searchcategory extends StatefulWidget {
   final String category;
 
@@ -72,6 +74,7 @@ class _searchcategoryState extends State<searchcategory> {
         appBar: AppBar(
           title: Text('Search Category'),
         ),
+        drawer: CommonDrawer(),
         body: Center(
           child: Padding(
             padding: EdgeInsets.all(16.0),
@@ -92,15 +95,19 @@ class _searchcategoryState extends State<searchcategory> {
             SizedBox(height: 16.0),
           
                 if (shopDetails.isNotEmpty)
+                
                   Column(
+                    
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: shopDetails.map((shopData) {
                       return Column(
+                       
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Shop ID: ${shopData['id']}'),
+                        children: [ 
+                           
+                           Text('Shop ID: ${shopData['id']}'),
                           Text('Shop Name: ${shopData['shopname']}'),
-                          Text('Category: ${shopData['category']}'),
+                           Text('Category: ${shopData['category']}'),
                           Text('Phone Number: ${shopData['phonenumber']}'),
                         ],
                       );

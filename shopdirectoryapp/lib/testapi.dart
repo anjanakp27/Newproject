@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shopdirectoryapp/main.dart';
 import 'package:shopdirectoryapp/searchcategory.dart';
 import 'dart:convert';
 import 'search.dart';
@@ -61,6 +62,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: Text('SHOP DIRECTORY APP'),
       ),
+      drawer: CommonDrawer(),
       body: ListView.builder(
         itemCount: categories.length,
         itemBuilder: (context, index) {
@@ -74,8 +76,30 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             },
-            child: ListTile(
-              title: Text(categories[index].categoryname),
+            child: Center(
+              child: Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                elevation: 10.0,
+                color: Colors.cyan[50],
+                margin: const EdgeInsets.all(20),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children:<Widget> [
+                          ListTile(
+              title: Center(child: Text(categories[index].categoryname)),
+            ),
+                    ],
+                  ),
+                  // child: Text(
+                    
+                  //   categories[index].categoryname,
+                  //   style: const TextStyle(fontSize: 18),
+                    
+                  // ),
+                ),
+              ),
             ),
           );
         },
@@ -83,17 +107,14 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          
-          
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context,MaterialPageRoute(builder: ((context) => searchcategory(category: ''))));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => searchcategory(category: ''))));
             },
             child: Icon(Icons.search),
           ),
           SizedBox(height: 16),
-          
-          
         ],
       ),
     );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:shopdirectoryapp/main.dart';
+
 class GetCategory extends StatefulWidget {
   final String category;
 
@@ -14,6 +16,8 @@ class GetCategory extends StatefulWidget {
 class _GetCategoryState extends State<GetCategory> {
   final TextEditingController categoryController = TextEditingController();
   List<Map<String, dynamic>> shopDetails = [];
+  
+
 
   Future<void> _fetchShopDetails(String category) async {
     try {
@@ -65,36 +69,46 @@ class _GetCategoryState extends State<GetCategory> {
     _fetchShopDetails(widget.category);
   }
 
+
+
+   
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Get Shop Details'),
         ),
+        drawer: CommonDrawer(),
         body: Center(
+        
          
           child: Padding(
             
             padding: EdgeInsets.all(16.0),
             
             child: Column(
+             
+              
               crossAxisAlignment: CrossAxisAlignment.start,
               
               children: [
                 
                 SizedBox(height: 16.0),
+                
                 if (shopDetails.isNotEmpty)
                   Column(
                    
                     crossAxisAlignment: CrossAxisAlignment.start,
                     
                     children: shopDetails.map((shopData) {
+                      
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           
                           Text('Shop Name: ${shopData['shopname']}'),
-                          Text('Category: ${shopData['category']}'),
+                           Text('Category: ${shopData['category']}'),
                           Text('Phone Number: ${shopData['phonenumber']}'),
                         ],
                       );

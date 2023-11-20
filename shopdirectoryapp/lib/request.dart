@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shopdirectoryapp/main.dart';
 
 
 
@@ -58,6 +59,7 @@ class RequestFormState extends State<RequestForm> {
         centerTitle: true,
         title: const Text("Request Form"),
       ),
+      drawer: CommonDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Form(
