@@ -4,6 +4,7 @@ import 'package:shopdirectoryapp/main.dart';
 import 'package:shopdirectoryapp/searchcategory.dart';
 import 'dart:convert';
 import 'search.dart';
+import 'drawer.dart';
 
 class Category {
   final dynamic id;
@@ -58,11 +59,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('SHOP DIRECTORY APP'),
-      ),
-      drawer: CommonDrawer(),
+      
       body: ListView.builder(
         itemCount: categories.length,
         itemBuilder: (context, index) {
@@ -110,7 +107,7 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => searchcategory(category: ''))));
+                  MaterialPageRoute(builder: ((context) => SearchCategory(category: ''))));
             },
             child: Icon(Icons.search),
           ),
