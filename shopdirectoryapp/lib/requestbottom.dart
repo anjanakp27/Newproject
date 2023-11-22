@@ -5,14 +5,14 @@ import 'package:http/http.dart' as http;
 import 'drawer.dart';
 import 'appbar.dart';
 
-class RequestForm extends StatefulWidget {
-  const RequestForm({Key? key}) : super(key: key);
+class RequestBottom extends StatefulWidget {
+  const RequestBottom({Key? key}) : super(key: key);
 
   @override
-  State<RequestForm> createState() => RequestFormState();
+  State<RequestBottom> createState() => RequestBottomState();
 }
 
-class RequestFormState extends State<RequestForm> {
+class RequestBottomState extends State<RequestBottom> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController shopnameController = TextEditingController();
   String? selectedCategory;
@@ -125,8 +125,8 @@ class RequestFormState extends State<RequestForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CommonAppBar(title:  'Request Form'), // Dynamic title
-      drawer: CommonDrawer(),
+        appBar: null, // Dynamic title
+      drawer: null,
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Form(

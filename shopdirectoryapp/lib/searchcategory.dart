@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'drawer.dart';
 import 'package:shopdirectoryapp/main.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SearchCategory extends StatefulWidget {
   final String category;
@@ -25,11 +26,16 @@ class _SearchCategoryState extends State<SearchCategory> {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
+         List<Map<String, dynamic>> sortedShopDetails =
+          List<Map<String, dynamic>>.from(data['data'] ?? []);
 
-        setState(() {
-          shopDetails =
-              List<Map<String, dynamic>>.from(data['data'] ?? []);
-        });
+      // Sort shop details alphabetically based on shop name
+      sortedShopDetails.sort((a, b) =>
+          a['shopname'].toString().compareTo(b['shopname'].toString()));
+setState(() {
+        shopDetails = sortedShopDetails;
+      });
+
       } else {
         // Handle API request errors here, e.g., show an error message
         setState(() {
@@ -41,6 +47,19 @@ class _SearchCategoryState extends State<SearchCategory> {
       print("Error: $error");
     }
   }
+
+ 
+ 
+ _launchDialer(dynamic phoneNumber) async {
+  final url = 'tel:${phoneNumber.toString()}';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    // Handle error
+    print('Could not launch $url');
+  }
+}
+
 
   @override
   void initState() {
@@ -88,13 +107,34 @@ class _SearchCategoryState extends State<SearchCategory> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Shop ID: ${shopData['id']}'),
-                              Text('Shop Name: ${shopData['shopname']}'),
-                              Text('Category: ${shopData['category']}'),
-                              Text('Phone Number: ${shopData['phonenumber']}'),
+                               Row(
+                                children: [
+                                  Icon(Icons.shop), // Add shop icon
+                                  SizedBox(width: 8.0),
+                                  Text('Shop Name: ${shopData['shopname']}'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.category), // Add category icon
+                                  SizedBox(width: 8.0),
+                                  Text('Category: ${shopData['category']}'),
+                                ],
+                              ),
+                               InkWell(
+                                onTap: () {
+                                  _launchDialer(shopData['phonenumber']);
+                                },
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.phone),
+                                    SizedBox(width: 8.0),
+                                    Text('Phone Number: ${shopData['phonenumber']}'),
                             ],
                           ),
                         ),
+                            ],
+                          ),)
                       );
                     }).toList(),
                   ),

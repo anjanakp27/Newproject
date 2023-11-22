@@ -39,6 +39,8 @@ class _HomePageState extends State<HomePage> {
       final dynamic responseData = jsonDecode(response.body);
       if (responseData['status'] == 'success') {
         final List<dynamic> categoryData = responseData['data'];
+         categoryData.sort((a, b) => a['categoryname'].compareTo(b['categoryname']));
+
         categories =
             categoryData.map((data) => Category.fromJson(data)).toList();
         setState(() {});
