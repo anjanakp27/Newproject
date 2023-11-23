@@ -15,10 +15,17 @@ class CommonDrawer extends StatelessWidget {
    return Drawer(
       child: ListView(
         children: <Widget>[
+          // Image.asset('assets/sloho1.jpg'),
           DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
-            child: null,
-          ),
+  decoration: BoxDecoration(
+    image: DecorationImage(
+      image: AssetImage('assets/slogo1.jpg'),
+      fit: BoxFit.cover,
+    ),
+  ),
+  child: null,
+),
+
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Home'),
@@ -42,7 +49,7 @@ class CommonDrawer extends StatelessWidget {
             title: Text('About'),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => About()));
+                  context, MaterialPageRoute(builder: (context) => AboutPage()));
             },
           ),
           ListTile(

@@ -142,7 +142,7 @@ class RequestFormState extends State<RequestForm> {
                   return null;
                 },
                 decoration: const InputDecoration(
-                  labelText: 'Shop Name:',
+                  labelText: 'Shop Name',
                 ),
               ),
               if (shopNameError != null)
@@ -165,7 +165,7 @@ class RequestFormState extends State<RequestForm> {
                   );
                 }).toList(),
                 decoration: const InputDecoration(
-                  labelText: 'Category:',
+                  labelText: 'Category',
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -189,7 +189,7 @@ class RequestFormState extends State<RequestForm> {
                   return null;
                 },
                 decoration: const InputDecoration(
-                  labelText: 'Phone Number:',
+                  labelText: 'Phone Number',
                 ),
               ),
               if (phoneNumberError != null)
