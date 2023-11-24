@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'drawer.dart';
 import 'package:shopdirectoryapp/main.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'appbar.dart';
 
 class GetCategory extends StatefulWidget {
   final String category;
@@ -69,9 +70,9 @@ class _GetCategoryState extends State<GetCategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Get Shop Details'),
-      ),
+     appBar: CommonAppBar(
+        title:'Get Shop Details'),
+      
       drawer: CommonDrawer(),
       body: SingleChildScrollView(
         child: Padding(
@@ -82,7 +83,7 @@ class _GetCategoryState extends State<GetCategory> {
               Center(
                 child: ListTile(
                   title: Text(
-                    'Category: ${widget.category}',
+                    'Category : ${widget.category}',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -101,25 +102,31 @@ class _GetCategoryState extends State<GetCategory> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                             Row(
-                                children: [
-                                  Icon(Icons.shop), // Add shop icon
-                                  SizedBox(width: 8.0),
-                                  Text('Shop Name: ${shopData['shopname']}'),
-                                ],
-                              ),
+                             Padding(
+                               padding: const EdgeInsets.all(9.0),
+                               child: Row(
+                                  children: [
+                                    Icon(Icons.shop), // Add shop icon
+                                    SizedBox(width: 8.0),
+                                    Text('Shop Name : ${shopData['shopname']}'),
+                                  ],
+                                ),
+                             ),
                                InkWell(
                                 onTap: () {
                                   _launchDialer(shopData['phonenumber']);
                                 },
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.phone),
-                                    SizedBox(width: 8.0),
-                                    Text('Phone Number: ${shopData['phonenumber']}'),
-                           
-                          ],
-                        ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(9.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.phone),
+                                      SizedBox(width: 8.0),
+                                      Text('Phone Number : ${shopData['phonenumber']}'),
+                                                           
+                                                          ],
+                                                        ),
+                                ),
                       ),
                           ],
                         ),

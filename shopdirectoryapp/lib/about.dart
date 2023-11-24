@@ -58,7 +58,7 @@ class AboutPage extends StatelessWidget {
             Text('Have suggestions,feedback, or want to add your shop and various institutions to our directory?  We would love to hear from you! Reach out to us at'),
             
             SizedBox(height: 8.0),
-            Text(' contact@example.com'),
+            Text('Email: contact@example.com'),
             Text('Phone: +123 456 7890'),
           ],
         ),

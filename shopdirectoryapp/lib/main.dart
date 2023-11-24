@@ -47,13 +47,14 @@ class _MainAppState extends State<MainApp> {
         items: [
           BottomNavigationBarItem(
             label: "Home",
-            icon: Icon(Icons.home, color: Colors.white),
+            icon: Icon(Icons.home, color: Colors.white,),
           ),
           BottomNavigationBarItem(
             label: "Requestform",
-            icon: Icon(Icons.account_circle, color: Colors.white),
+            icon: Icon(Icons.account_circle, color: Colors.white,),
           ),
         ],
+        selectedItemColor: Colors.white,
         onTap: (index) {
           // Use the PageController to navigate to the selected page
           _pageController.jumpToPage(index);

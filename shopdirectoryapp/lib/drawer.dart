@@ -18,12 +18,19 @@ class CommonDrawer extends StatelessWidget {
           // Image.asset('assets/sloho1.jpg'),
           DrawerHeader(
   decoration: BoxDecoration(
-    image: DecorationImage(
-      image: AssetImage('assets/slogo1.jpg'),
-      fit: BoxFit.cover,
+    color: Colors.blue,),
+   child: Container(
+      width: 100,
+      height: 100,
+      child: Image.asset('assets/slogo1.jpg'),
     ),
-  ),
-  child: null,
+    // image: DecorationImage(
+    //   image: AssetImage('assets/slogo1.jpg'),
+    //   fit: BoxFit.fitHeight,
+    // ),
+  
+  
+  
 ),
 
           ListTile(

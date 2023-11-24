@@ -87,7 +87,9 @@ class RequestBottomState extends State<RequestBottom> {
                     // Navigator.pop(context); 
                     // Navigate back to the previous screen
                     shopnameController.clear();
-                    selectedCategory =null;
+                    setState(() {
+                    selectedCategory = null; // Clear the selected category
+                  });
                     phonenumberController.clear();
                   },
                   child: Text('OK'),
@@ -166,6 +168,7 @@ class RequestBottomState extends State<RequestBottom> {
                 }).toList(),
                 decoration: const InputDecoration(
                   labelText: 'Category',
+
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {

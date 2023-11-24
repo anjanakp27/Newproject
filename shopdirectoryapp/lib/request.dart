@@ -87,7 +87,10 @@ class RequestFormState extends State<RequestForm> {
                     // Navigator.pop(context); 
                     // Navigate back to the previous screen
                     shopnameController.clear();
-                    selectedCategory =null;
+                    setState(() {
+                    selectedCategory = null; // Clear the selected category
+                  });
+                    
                     phonenumberController.clear();
                   },
                   child: Text('OK'),
