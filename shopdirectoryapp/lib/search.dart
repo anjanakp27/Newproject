@@ -19,9 +19,11 @@ class GetCategory extends StatefulWidget {
 class _GetCategoryState extends State<GetCategory> {
   final TextEditingController categoryController = TextEditingController();
   List<Map<String, dynamic>> shopDetails = [];
+   
 
   Future<void> _fetchShopDetails(String category) async {
     try {
+  
       final response = await http.get(
           Uri.parse('http://localhost:8000/api/shops/category/$category'));
 
@@ -136,6 +138,7 @@ class _GetCategoryState extends State<GetCategory> {
                 ),
               if (shopDetails.isEmpty)
                 Text('No data found'),
+                 
             ],
           ),
         ),

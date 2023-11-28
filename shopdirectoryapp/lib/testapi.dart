@@ -5,6 +5,8 @@ import 'package:shopdirectoryapp/searchcategory.dart';
 import 'dart:convert';
 import 'search.dart';
 import 'drawer.dart';
+import 'dart:math';
+
 
 class Category {
   final dynamic id;
@@ -30,6 +32,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Category> categories = [];
+  final Random random = Random();
+   final List<Color> distinctColors = [
+    Colors.pink.shade800,
+    Colors.red.shade900,
+    Colors.green.shade900,
+    Colors.brown.shade900,
+    Colors.purple.shade900,
+  ];
+
+  // Function to generate a random color
+  Color getRandomColor() {
+    
+    return distinctColors[random.nextInt(distinctColors.length)];
+  }
 
   Future<void> _fetchData() async {
     final response =
@@ -65,6 +81,8 @@ class _HomePageState extends State<HomePage> {
       body: ListView.builder(
         itemCount: categories.length,
         itemBuilder: (context, index) {
+           // Generate a random color for each card
+          Color randomColor = getRandomColor();
           return InkWell(
             onTap: () {
               var valueToPass = categories[index].categoryname;
@@ -79,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               child: Card(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                 elevation: 10.0,
-                color: Colors.cyan[50],
+                color: randomColor, // Set the random color here
                 margin: const EdgeInsets.all(20),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -87,7 +105,13 @@ class _HomePageState extends State<HomePage> {
                     mainAxisSize: MainAxisSize.min,
                     children:<Widget> [
                           ListTile(
-              title: Center(child: Text(categories[index].categoryname)),
+              // title: Center(child: Text(categories[index].categoryname)),
+              title: Center(
+  child: Text(
+    categories[index].categoryname,
+    style: TextStyle(color: Colors.white),
+  ),
+),
             ),
                     ],
                   ),

@@ -10,12 +10,30 @@ import 'searchcategory.dart';
 import 'drawer.dart';
 import 'appbar.dart';
 import 'requestbottom.dart';
+import 'splashscreen.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: MainApp(),
-  ));
+// void main() {
+//   runApp(MaterialApp(
+//     home: MainApp(),
+//   ));
+// }
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => SplashScreen(),
+        '/main': (context) => MainApp(),// replace 'MainScreen' with your main application screen
+      },
+    );
+  }
 }
+
+
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -38,7 +56,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: 'Shop Directory App'),
+      appBar: CommonAppBar(title: 'Shop Directory '),
        
       drawer: CommonDrawer(),
       bottomNavigationBar: BottomNavigationBar(
@@ -50,7 +68,7 @@ class _MainAppState extends State<MainApp> {
             icon: Icon(Icons.home, color: Colors.white,),
           ),
           BottomNavigationBarItem(
-            label: "Requestform",
+            label: "Add Your Shop",
             icon: Icon(Icons.account_circle, color: Colors.white,),
           ),
         ],
