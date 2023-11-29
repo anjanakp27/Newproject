@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:shopdirectoryapp/about.dart';
 import 'package:shopdirectoryapp/searchcategory.dart';
@@ -11,6 +9,8 @@ import 'drawer.dart';
 import 'appbar.dart';
 import 'requestbottom.dart';
 import 'splashscreen.dart';
+import 'dart:ui';
+import 'backgroundimage.dart';
 
 // void main() {
 //   runApp(MaterialApp(
@@ -21,6 +21,14 @@ import 'splashscreen.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final List<Widget> _pages = [
+    BackgroundImage(child: HomePage()),
+    BackgroundImage(child: RequestBottom()),
+    BackgroundImage(child: AboutPage()),
+
+    // Add more pages as needed
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,8 +53,10 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   var valueToPass;
   final List<Widget> _pages = [
+    
     HomePage(),
     RequestBottom(),
+    
   ];
   int _currentIndex = 0;
 
@@ -55,7 +65,7 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: CommonAppBar(title: 'Shop Directory '),
        
       drawer: CommonDrawer(),
@@ -88,6 +98,9 @@ class _MainAppState extends State<MainApp> {
           });
         },
       ),
+    
+     
     );
   }
 }
+

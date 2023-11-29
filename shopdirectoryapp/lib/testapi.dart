@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'search.dart';
 import 'drawer.dart';
 import 'dart:math';
-
+import 'backgroundimage.dart';
 
 class Category {
   final dynamic id;
@@ -35,16 +35,33 @@ class _HomePageState extends State<HomePage> {
   final Random random = Random();
    final List<Color> distinctColors = [
     Colors.pink.shade800,
-    Colors.red.shade900,
+    Colors.red.shade800,
     Colors.green.shade900,
-    Colors.brown.shade900,
-    Colors.purple.shade900,
+    Colors.brown.shade400,
+    Colors.purple.shade700,
   ];
 
   // Function to generate a random color
-  Color getRandomColor() {
+  // Color getRandomColor() {
     
-    return distinctColors[random.nextInt(distinctColors.length)];
+  //   return distinctColors[random.nextInt(distinctColors.length)];
+  // }
+   List<Color> usedColors = [];
+
+   // Function to generate a random color that has not been used before
+  Color getRandomColor() {
+    List<Color> availableColors = List.from(distinctColors.where((color) => !usedColors.contains(color)));
+
+    if (availableColors.isEmpty) {
+      // If all colors have been used, reset the usedColors list
+      usedColors.clear();
+      availableColors = List.from(distinctColors);
+    }
+
+    Color randomColor = availableColors[random.nextInt(availableColors.length)];
+    usedColors.add(randomColor);
+
+    return randomColor;
   }
 
   Future<void> _fetchData() async {
@@ -76,7 +93,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BackgroundImage
+    (child:Scaffold(
       
       body: ListView.builder(
         itemCount: categories.length,
@@ -140,6 +158,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 16),
         ],
       ),
+    )
     );
   }
 }

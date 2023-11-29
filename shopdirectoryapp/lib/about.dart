@@ -8,12 +8,14 @@ import 'searchcategory.dart';
 import 'drawer.dart';
 import 'appbar.dart';
 import 'requestbottom.dart';
+import 'backgroundimage.dart';
 
 
 class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BackgroundImage(
+      child:Scaffold(
       appBar: CommonAppBar(
         title:'About Us'),
       
@@ -62,6 +64,7 @@ class AboutPage extends StatelessWidget {
             Text('Phone: +123 456 7890'),
           ],
         ),
+      ),
       ),
     );
   }
