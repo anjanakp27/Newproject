@@ -76,7 +76,14 @@ class _GetCategoryState extends State<GetCategory> {
         title:'Get Shop Details'),
       
       drawer: CommonDrawer(),
-      body: SingleChildScrollView(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/backgroundimage.jpg'), // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+      child: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
@@ -142,6 +149,7 @@ class _GetCategoryState extends State<GetCategory> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

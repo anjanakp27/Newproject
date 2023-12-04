@@ -2,10 +2,9 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:shopdirectoryapp/backgroundimage.dart';
 import 'drawer.dart';
 import 'appbar.dart';
-import 'backgroundimage.dart';
+
 
 class RequestBottom extends StatefulWidget {
   const RequestBottom({Key? key}) : super(key: key);
@@ -128,11 +127,18 @@ class RequestBottomState extends State<RequestBottom> {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundImage(child:
-    Scaffold(
+    // return BackgroundImage(child:
+  return  Scaffold(
         appBar: null, // Dynamic title
       drawer: null,
-      body: Padding(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/backgroundimage.jpg'), // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+     child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Form(
           key: _formKey,
@@ -214,7 +220,8 @@ class RequestBottomState extends State<RequestBottom> {
           ),
         ),
       ),
-    )
+      ),
+    
     );
   }
 }

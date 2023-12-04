@@ -8,19 +8,27 @@ import 'searchcategory.dart';
 import 'drawer.dart';
 import 'appbar.dart';
 import 'requestbottom.dart';
-import 'backgroundimage.dart';
+
 
 
 class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BackgroundImage(
-      child:Scaffold(
+    
+      return Scaffold(
       appBar: CommonAppBar(
         title:'About Us'),
+          drawer: CommonDrawer(),
+        body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/backgroundimage.jpg'), // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
       
-      drawer: CommonDrawer(),
-      body: Padding(
+    child:SingleChildScrollView(
+   child:    Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,11 +69,13 @@ class AboutPage extends StatelessWidget {
             
             SizedBox(height: 8.0),
             Text('Email: contact@example.com'),
-            Text('Phone: +123 456 7890'),
+            Text('Phone: 0456789090'),
           ],
+        
         ),
-      ),
-      ),
+       ),
+        ),
+        ), 
     );
   }
 }

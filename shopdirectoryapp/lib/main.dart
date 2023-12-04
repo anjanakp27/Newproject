@@ -10,7 +10,7 @@ import 'appbar.dart';
 import 'requestbottom.dart';
 import 'splashscreen.dart';
 import 'dart:ui';
-import 'backgroundimage.dart';
+
 
 // void main() {
 //   runApp(MaterialApp(
@@ -21,13 +21,9 @@ import 'backgroundimage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  final List<Widget> _pages = [
-    BackgroundImage(child: HomePage()),
-    BackgroundImage(child: RequestBottom()),
-    BackgroundImage(child: AboutPage()),
-
+  
     // Add more pages as needed
-  ];
+  
 
   @override
   Widget build(BuildContext context) {

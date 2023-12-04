@@ -130,7 +130,14 @@ class RequestFormState extends State<RequestForm> {
     return Scaffold(
         appBar: CommonAppBar(title:  'Request Form'), // Dynamic title
       drawer: CommonDrawer(),
-      body: Padding(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/backgroundimage.jpg'), // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+      child:Padding(
         padding: const EdgeInsets.all(10.0),
         child: Form(
           key: _formKey,
@@ -210,6 +217,7 @@ class RequestFormState extends State<RequestForm> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

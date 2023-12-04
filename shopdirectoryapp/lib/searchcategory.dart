@@ -65,7 +65,15 @@ class _SearchCategoryState extends State<SearchCategory> {
     return Scaffold(
       appBar: CommonAppBar(title: 'Search Category'),
       drawer: CommonDrawer(),
-      body: Form(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/backgroundimage.jpg'), // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+      
+       child:Form(
         key: _formKey,
         child: ListView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -117,7 +125,7 @@ class _SearchCategoryState extends State<SearchCategory> {
                                     children: [
                                       Icon(Icons.shop),
                                       SizedBox(width: 8.0),
-                                      Text('Shop Name : ${shopData['shopname']}'),
+                                      Flexible(child: Text('Shop Name : ${shopData['shopname']}')),
                                     ],
                                   ),
                                 ),
@@ -127,7 +135,7 @@ class _SearchCategoryState extends State<SearchCategory> {
                                     children: [
                                       Icon(Icons.category),
                                       SizedBox(width: 8.0),
-                                      Text('Category : ${shopData['category']}'),
+                                      Flexible(child: Text('Category : ${shopData['category']}')),
                                     ],
                                   ),
                                 ),
@@ -141,8 +149,10 @@ class _SearchCategoryState extends State<SearchCategory> {
                                       children: [
                                         Icon(Icons.phone),
                                         SizedBox(width: 8.0),
-                                        Text(
-                                            'Phone Number : ${shopData['phonenumber']}'),
+                                        Flexible(
+                                          child: Text(
+                                              'Phone Number : ${shopData['phonenumber']}'),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -162,6 +172,7 @@ class _SearchCategoryState extends State<SearchCategory> {
             ),
           ],
         ),
+      ),
       ),
     );
   }
